@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var utils = require('./utils.js');
 var cache = require('memory-cache');
+var process = require('process');
 
 var stories = utils.loadStories();
 
@@ -22,6 +23,6 @@ app.get('/',function(req,res){
     res.redirect(302,'/v1/stories');
 });
 
-app.listen(3000,function(){
+app.listen(process.env.PORT || 5000,function(){
    console.log('Started serving stories.....');
 });
